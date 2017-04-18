@@ -1,0 +1,359 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/yanxi-com/nodejs-random-key"
+
+    >random-key (v0.3.2)</a>
+</h1>
+<h4>Generating random strings (cryptographically strong) for NodeJS</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.random-key">module random-key</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.random-key.generate">
+            function <span class="apidocSignatureSpan">random-key.</span>generate
+            <span class="apidocSignatureSpan">(len, chars)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.random-key.generateBase30">
+            function <span class="apidocSignatureSpan">random-key.</span>generateBase30
+            <span class="apidocSignatureSpan">(len)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.random-key.generateDigits">
+            function <span class="apidocSignatureSpan">random-key.</span>generateDigits
+            <span class="apidocSignatureSpan">(len)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.random-key.generate">module random-key.generate</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.random-key.generate.generate">
+            function <span class="apidocSignatureSpan">random-key.</span>generate
+            <span class="apidocSignatureSpan">(len, chars)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.random-key.generateBase30">module random-key.generateBase30</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.random-key.generateBase30.generateBase30">
+            function <span class="apidocSignatureSpan">random-key.</span>generateBase30
+            <span class="apidocSignatureSpan">(len)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.random-key.generateDigits">module random-key.generateDigits</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.random-key.generateDigits.generateDigits">
+            function <span class="apidocSignatureSpan">random-key.</span>generateDigits
+            <span class="apidocSignatureSpan">(len)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.random-key" id="apidoc.module.random-key">module random-key</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.random-key.generate" id="apidoc.element.random-key.generate">
+        function <span class="apidocSignatureSpan">random-key.</span>generate
+        <span class="apidocSignatureSpan">(len, chars)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generate = function (len, chars) {
+  len = len || 16;
+  chars = chars || base62;
+  var key = &#x27;&#x27;;
+  var charsLen = chars.length;
+  for (var i=0; i&#x3c;len; i++) {
+    key += chars[rn(charsLen)];
+  }
+  return key;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* len: the length of the generated string, default is 16
+
+## Usage for JS
+
+```javascript
+var rand = require(&#x22;random-key&#x22;);
+
+rand.<span class="apidocCodeKeywordSpan">generate</span>(); // =&#x3e; eg: wexO23UXGezfTKHc
+
+rand.generate(7); // =&#x3e; TShNQGc
+
+rand.generateDigits(5);  // =&#x3e; 08297
+
+rand.generateBase30(5);  // =&#x3e; K5UJ1
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.random-key.generateBase30" id="apidoc.element.random-key.generateBase30">
+        function <span class="apidocSignatureSpan">random-key.</span>generateBase30
+        <span class="apidocSignatureSpan">(len)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateBase30 = function (len) {
+  len = len || 16;
+  return exports.generate(len, base30)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+rand.generate(); // =&#x3e; eg: wexO23UXGezfTKHc
+
+rand.generate(7); // =&#x3e; TShNQGc
+
+rand.generateDigits(5);  // =&#x3e; 08297
+
+rand.<span class="apidocCodeKeywordSpan">generateBase30</span>(5);  // =&#x3e; K5UJ1
+```
+
+## LICENSE
+
+nodejs-random-string is licensed under the BSD license.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.random-key.generateDigits" id="apidoc.element.random-key.generateDigits">
+        function <span class="apidocSignatureSpan">random-key.</span>generateDigits
+        <span class="apidocSignatureSpan">(len)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateDigits = function (len) {
+  len = len || 16;
+  return exports.generate(len, digits)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+var rand = require(&#x22;random-key&#x22;);
+
+rand.generate(); // =&#x3e; eg: wexO23UXGezfTKHc
+
+rand.generate(7); // =&#x3e; TShNQGc
+
+rand.<span class="apidocCodeKeywordSpan">generateDigits</span>(5);  // =&#x3e; 08297
+
+rand.generateBase30(5);  // =&#x3e; K5UJ1
+```
+
+## LICENSE
+
+nodejs-random-string is licensed under the BSD license.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.random-key.generate" id="apidoc.module.random-key.generate">module random-key.generate</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.random-key.generate.generate" id="apidoc.element.random-key.generate.generate">
+        function <span class="apidocSignatureSpan">random-key.</span>generate
+        <span class="apidocSignatureSpan">(len, chars)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generate = function (len, chars) {
+  len = len || 16;
+  chars = chars || base62;
+  var key = &#x27;&#x27;;
+  var charsLen = chars.length;
+  for (var i=0; i&#x3c;len; i++) {
+    key += chars[rn(charsLen)];
+  }
+  return key;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* len: the length of the generated string, default is 16
+
+## Usage for JS
+
+```javascript
+var rand = require(&#x22;random-key&#x22;);
+
+rand.<span class="apidocCodeKeywordSpan">generate</span>(); // =&#x3e; eg: wexO23UXGezfTKHc
+
+rand.generate(7); // =&#x3e; TShNQGc
+
+rand.generateDigits(5);  // =&#x3e; 08297
+
+rand.generateBase30(5);  // =&#x3e; K5UJ1
+```
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.random-key.generateBase30" id="apidoc.module.random-key.generateBase30">module random-key.generateBase30</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.random-key.generateBase30.generateBase30" id="apidoc.element.random-key.generateBase30.generateBase30">
+        function <span class="apidocSignatureSpan">random-key.</span>generateBase30
+        <span class="apidocSignatureSpan">(len)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateBase30 = function (len) {
+  len = len || 16;
+  return exports.generate(len, base30)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+rand.generate(); // =&#x3e; eg: wexO23UXGezfTKHc
+
+rand.generate(7); // =&#x3e; TShNQGc
+
+rand.generateDigits(5);  // =&#x3e; 08297
+
+rand.<span class="apidocCodeKeywordSpan">generateBase30</span>(5);  // =&#x3e; K5UJ1
+```
+
+## LICENSE
+
+nodejs-random-string is licensed under the BSD license.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.random-key.generateDigits" id="apidoc.module.random-key.generateDigits">module random-key.generateDigits</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.random-key.generateDigits.generateDigits" id="apidoc.element.random-key.generateDigits.generateDigits">
+        function <span class="apidocSignatureSpan">random-key.</span>generateDigits
+        <span class="apidocSignatureSpan">(len)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateDigits = function (len) {
+  len = len || 16;
+  return exports.generate(len, digits)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+var rand = require(&#x22;random-key&#x22;);
+
+rand.generate(); // =&#x3e; eg: wexO23UXGezfTKHc
+
+rand.generate(7); // =&#x3e; TShNQGc
+
+rand.<span class="apidocCodeKeywordSpan">generateDigits</span>(5);  // =&#x3e; 08297
+
+rand.generateBase30(5);  // =&#x3e; K5UJ1
+```
+
+## LICENSE
+
+nodejs-random-string is licensed under the BSD license.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
