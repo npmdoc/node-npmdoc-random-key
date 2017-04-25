@@ -1,4 +1,7 @@
-# api documentation for  [random-key (v0.3.2)](https://github.com/yanxi-com/nodejs-random-key)  [![npm package](https://img.shields.io/npm/v/npmdoc-random-key.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-random-key) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-random-key.svg)](https://travis-ci.org/npmdoc/node-npmdoc-random-key)
+# npmdoc-random-key
+
+#### basic api documentation for  [random-key (v0.3.2)](https://github.com/yanxi-com/nodejs-random-key)  [![npm package](https://img.shields.io/npm/v/npmdoc-random-key.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-random-key) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-random-key.svg)](https://travis-ci.org/npmdoc/node-npmdoc-random-key)
+
 #### Generating random strings (cryptographically strong) for NodeJS
 
 [![NPM](https://nodei.co/npm/random-key.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/random-key)
@@ -55,7 +58,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "version": "0.3.2"
+    "version": "0.3.2",
+    "bin": {}
 }
 ```
 
